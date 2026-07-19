@@ -1,4 +1,3 @@
-<img width="775" height="659" alt="er-diagram-v1" src="https://github.com/user-attachments/assets/e8758ee2-392b-49d6-8eeb-161b0bc6da8c" />
 # Bank Database SQL
 
 A simple banking database management system built with **MySQL** as part of a **Data Management (DTS304)** course project at the **Federal University of Technology, Minna (FUTMINNA)**.
