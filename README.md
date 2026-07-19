@@ -1,3 +1,4 @@
+<img width="775" height="659" alt="er-diagram-v1" src="https://github.com/user-attachments/assets/e8758ee2-392b-49d6-8eeb-161b0bc6da8c" />
 # Bank Database SQL
 
 A simple banking database management system built with **MySQL** as part of a **Data Management (DTS304)** course project at the **Federal University of Technology, Minna (FUTMINNA)**.
@@ -12,6 +13,9 @@ The project demonstrates the fundamentals of relational database design by model
 - Sample data for testing
 - SQL queries for data retrieval and analysis
 - ER Diagrams (Chen's Notation & Crow's Foot)
+
+<img width="387" height="347" alt="er-diagram-v1" src="https://github.com/user-attachments/assets/495401d6-3cac-41e1-a616-b011fdb5de0e" />
+
 
 ## Database Entities
 
