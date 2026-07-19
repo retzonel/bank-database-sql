@@ -1,0 +1,150 @@
+/* ============================================================
+   Bank Database - Chen Notation Entity-Relationship Diagram
+   Generated for DBMS / Data Management coursework
+   Render with: dot -Tpng bank_er_diagram.dot -o bank_er_diagram.png
+   ============================================================ */
+
+graph BankER {
+    graph [
+        rankdir=TB,
+        fontname="Times New Roman",
+        fontsize=20,
+        label="Bank Database - Entity Relationship Diagram (Chen Notation)",
+        labelloc=t,
+        splines=line,
+        nodesep=0.5,
+        ranksep=0.9
+    ];
+
+    node [fontname="Times New Roman", fontsize=12];
+    edge [fontname="Times New Roman", fontsize=10, color="#333333"];
+
+    /* ---------------- ENTITY NODES ---------------- */
+    node [shape=rectangle, style=filled, fillcolor="#BBDEFB", color="#0D47A1", penwidth=2];
+
+    Customer   [label="Customer"];
+    Branch     [label="Branch"];
+    Account    [label="Account"];
+    Transactions [label="Transactions"];
+    Employee   [label="Employee"];
+    Loan       [label="Loan"];
+    Card       [label="Card"];
+
+    /* ---------------- RELATIONSHIP NODES (diamonds) ---------------- */
+    node [shape=diamond, style=filled, fillcolor="#FFE0B2", color="#E65100", penwidth=2, fontsize=11];
+
+    Owns      [label="Owns"];       /* Customer - Account */
+    Hosts     [label="Hosts"];      /* Branch - Account */
+    Records   [label="Records"];    /* Account - Transactions */
+    Employs   [label="Employs"];    /* Branch - Employee */
+    Takes     [label="Takes"];      /* Customer - Loan */
+    IssuedTo  [label="Issued To"];  /* Account - Card */
+
+    /* ---------------- ATTRIBUTE NODES (ellipses) ---------------- */
+    node [shape=ellipse, style=filled, fillcolor="#E8F5E9", color="#1B5E20", penwidth=1, fontsize=10];
+
+    /* Customer attributes */
+    cust_id     [label=<<u>customer_id</u>>];
+    cust_fname  [label="first_name"];
+    cust_lname  [label="last_name"];
+    cust_phone  [label="phone"];
+    cust_email  [label="email"];
+    cust_addr   [label="address"];
+
+    /* Branch attributes */
+    br_id     [label=<<u>branch_id</u>>];
+    br_name   [label="branch_name"];
+    br_loc    [label="location"];
+
+    /* Account attributes */
+    acc_id      [label=<<u>account_id</u>>];
+    acc_bal     [label="balance"];
+    acc_type    [label="account_type"];
+    acc_date    [label="date_opened"];
+
+    /* Transactions attributes */
+    tx_id       [label=<<u>transaction_id</u>>];
+    tx_amount   [label="amount"];
+    tx_type     [label="transaction_type"];
+    tx_date     [label="transaction_date"];
+
+    /* Employee attributes */
+    emp_id      [label=<<u>employee_id</u>>];
+    emp_name    [label="employee_name"];
+    emp_pos     [label="employee_position"];
+
+    /* Loan attributes */
+    loan_id     [label=<<u>loan_id</u>>];
+    loan_amt    [label="loan_amount"];
+    loan_rate   [label="interest_rate"];
+    loan_status [label="loan_status"];
+
+    /* Card attributes */
+    card_id     [label=<<u>card_id</u>>];
+    card_type   [label="card_type"];
+    card_exp    [label="expiry_date"];
+
+    /* ---------------- ENTITY - ATTRIBUTE EDGES ---------------- */
+    edge [style=solid, color="#1B5E20"];
+
+    Customer -- cust_id;
+    Customer -- cust_fname;
+    Customer -- cust_lname;
+    Customer -- cust_phone;
+    Customer -- cust_email;
+    Customer -- cust_addr;
+
+    Branch -- br_id;
+    Branch -- br_name;
+    Branch -- br_loc;
+
+    Account -- acc_id;
+    Account -- acc_bal;
+    Account -- acc_type;
+    Account -- acc_date;
+
+    Transactions -- tx_id;
+    Transactions -- tx_amount;
+    Transactions -- tx_type;
+    Transactions -- tx_date;
+
+    Employee -- emp_id;
+    Employee -- emp_name;
+    Employee -- emp_pos;
+
+    Loan -- loan_id;
+    Loan -- loan_amt;
+    Loan -- loan_rate;
+    Loan -- loan_status;
+
+    Card -- card_id;
+    Card -- card_type;
+    Card -- card_exp;
+
+    /* ---------------- ENTITY - RELATIONSHIP EDGES ---------------- */
+    edge [style=solid, color="#333333", fontcolor="#333333"];
+
+    /* Customer (1) --- Owns --- (N) Account */
+    Customer -- Owns      [label="1"];
+    Owns     -- Account   [label="N"];
+
+    /* Branch (1) --- Hosts --- (N) Account */
+    Branch   -- Hosts     [label="1"];
+    Hosts    -- Account   [label="N"];
+
+    /* Account (1) --- Records --- (N) Transactions */
+    Account      -- Records      [label="1"];
+    Records      -- Transactions [label="N"];
+
+    /* Branch (1) --- Employs --- (N) Employee */
+    Branch   -- Employs   [label="1"];
+    Employs  -- Employee  [label="N"];
+
+    /* Customer (1) --- Takes --- (N) Loan */
+    Customer -- Takes     [label="1"];
+    Takes    -- Loan      [label="N"];
+
+    /* Account (1) --- Issued To --- (N) Card */
+    Account  -- IssuedTo  [label="1"];
+    IssuedTo -- Card      [label="N"];
+}
